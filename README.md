@@ -1,0 +1,2 @@
+# nightcity.nvim
+🏙 Night City
