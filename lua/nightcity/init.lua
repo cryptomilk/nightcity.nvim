@@ -13,6 +13,16 @@ local NightCity = {}
 NightCity.config = {
     style = 'kabuki',
     terminal_colors = true,
+    invert_colors = {
+        cursor = true,
+        diff = true,
+        error = true,
+        search = true,
+        selection = false,
+        signs = false,
+        statusline = true,
+        tabline = false,
+    },
     font_style = {
         comments = { italic = true },
         keywords = { italic = true },
@@ -64,9 +74,23 @@ H.setup_config = function(config)
     vim.validate({
         style = { config.style, 'string' },
         terminal_colors = { config.terminal_colors, 'boolean' },
+        invert_colors = { config.invert_colors, 'table' },
         font_style = { config.font_style, 'table' },
     })
 
+    vim.validate({
+        ['invert_colors.cursor'] = { config.invert_colors.cursor, 'boolean' },
+        ['invert_colors.diff'] = { config.invert_colors.diff, 'boolean' },
+        ['invert_colors.error'] = { config.invert_colors.error, 'boolean' },
+        ['invert_colors.search'] = { config.invert_colors.search, 'boolean' },
+        ['invert_colors.selection'] = {
+            config.invert_colors.selection,
+            'boolean',
+        },
+        ['invert_colors.signs'] = { config.invert_colors.signs, 'boolean' },
+        ['invert_colors.statusline'] = { config.invert_colors.statusline, 'boolean' },
+        ['invert_colors.tabline'] = { config.invert_colors.tabline, 'boolean' },
+    })
     vim.validate({
         ['font_style.comments'] = { config.font_style.comments, 'table' },
         ['font_style.keywords'] = { config.font_style.keywords, 'table' },

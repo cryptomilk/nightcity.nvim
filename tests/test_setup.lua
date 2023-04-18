@@ -46,6 +46,16 @@ T['setup()']['config table'] = function()
 
     expect_config('style', 'kabuki')
     expect_config('terminal_colors', true)
+
+    expect_config('invert_colors.cursor', true)
+    expect_config('invert_colors.diff', true)
+    expect_config('invert_colors.error', true)
+    expect_config('invert_colors.search', true)
+    expect_config('invert_colors.selection', false)
+    expect_config('invert_colors.signs', false)
+    expect_config('invert_colors.statusline', true)
+    expect_config('invert_colors.tabline', false)
+
     expect_config('font_style.comments.italic', true)
     expect_config('font_style.keywords.italic', true)
     expect_config('font_style.functions.bold', true)
@@ -64,7 +74,49 @@ T['setup()']['validates config argument'] = function()
     expect_config_error('a', 'config', 'table')
     expect_config_error({ style = 3 }, 'style', 'string')
     expect_config_error({ terminal_colors = 3 }, 'terminal_colors', 'boolean')
+    expect_config_error({ invert_colors = '' }, 'invert_colors', 'table')
     expect_config_error({ font_style = '' }, 'font_style', 'table')
+
+    expect_config_error(
+        { invert_colors = { cursor = 5 } },
+        'invert_colors.cursor',
+        'boolean'
+    )
+    expect_config_error(
+        { invert_colors = { diff = 5 } },
+        'invert_colors.diff',
+        'boolean'
+    )
+    expect_config_error(
+        { invert_colors = { error = 5 } },
+        'invert_colors.error',
+        'boolean'
+    )
+    expect_config_error(
+        { invert_colors = { search = 5 } },
+        'invert_colors.search',
+        'boolean'
+    )
+    expect_config_error(
+        { invert_colors = { selection = 5 } },
+        'invert_colors.selection',
+        'boolean'
+    )
+    expect_config_error(
+        { invert_colors = { signs = 5 } },
+        'invert_colors.signs',
+        'boolean'
+    )
+    expect_config_error(
+        { invert_colors = { statusline = 5 } },
+        'invert_colors.statusline',
+        'boolean'
+    )
+    expect_config_error(
+        { invert_colors = { tabline = 5 } },
+        'invert_colors.tabline',
+        'boolean'
+    )
 
     expect_config_error(
         { font_style = { comments = '' } },
