@@ -13,6 +13,13 @@ local NightCity = {}
 NightCity.config = {
     style = 'kabuki',
     terminal_colors = true,
+    font_style = {
+        comments = { italic = true },
+        keywords = { italic = true },
+        functions = { bold = true },
+        variables = {},
+        search = { bold = true },
+    },
 }
 
 --- Module setup
@@ -57,6 +64,14 @@ H.setup_config = function(config)
     vim.validate({
         style = { config.style, 'string' },
         terminal_colors = { config.terminal_colors, 'boolean' },
+        font_style = { config.font_style, 'table' },
+    })
+
+    vim.validate({
+        ['font_style.comments'] = { config.font_style.comments, 'table' },
+        ['font_style.keywords'] = { config.font_style.keywords, 'table' },
+        ['font_style.functions'] = { config.font_style.functions, 'table' },
+        ['font_style.variables'] = { config.font_style.variables, 'table' },
     })
 
     return config

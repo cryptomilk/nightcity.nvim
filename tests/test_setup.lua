@@ -46,6 +46,46 @@ T['setup()']['config table'] = function()
 
     expect_config('style', 'kabuki')
     expect_config('terminal_colors', true)
+    expect_config('font_style.comments.italic', true)
+    expect_config('font_style.keywords.italic', true)
+    expect_config('font_style.functions.bold', true)
+    expect_config('font_style.variables', {})
+end
+
+T['setup()']['validates config argument'] = function()
+    local expect_config_error = function(config, name, target_type)
+        expect.error(
+            reload_module,
+            vim.pesc(name) .. '.*' .. vim.pesc(target_type),
+            config
+        )
+    end
+
+    expect_config_error('a', 'config', 'table')
+    expect_config_error({ style = 3 }, 'style', 'string')
+    expect_config_error({ terminal_colors = 3 }, 'terminal_colors', 'boolean')
+    expect_config_error({ font_style = '' }, 'font_style', 'table')
+
+    expect_config_error(
+        { font_style = { comments = '' } },
+        'font_style.comments',
+        'table'
+    )
+    expect_config_error(
+        { font_style = { keywords = '' } },
+        'font_style.keywords',
+        'table'
+    )
+    expect_config_error(
+        { font_style = { functions = '' } },
+        'font_style.functions',
+        'table'
+    )
+    expect_config_error(
+        { font_style = { variables = '' } },
+        'font_style.variables',
+        'table'
+    )
 end
 
 return T
