@@ -138,6 +138,8 @@ T['setup()']['validates config argument'] = function()
         'font_style.variables',
         'table'
     )
+
+    expect_config_error({ on_highlights = '' }, 'on_highlights', 'function')
 end
 
 return T

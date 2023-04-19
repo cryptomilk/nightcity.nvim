@@ -10,6 +10,8 @@
 local H = {}
 local NightCity = {}
 
+---@class Config
+---@field on_highlights fun(groups: HighlightGroups, colors: ColorPalette)
 NightCity.config = {
     style = 'kabuki',
     terminal_colors = true,
@@ -30,6 +32,8 @@ NightCity.config = {
         variables = {},
         search = { bold = true },
     },
+    --- @diagnostic disable-next-line: unused-local
+    on_highlights = function(groups, colors) end,
 }
 
 --- Module setup
@@ -76,6 +80,7 @@ H.setup_config = function(config)
         terminal_colors = { config.terminal_colors, 'boolean' },
         invert_colors = { config.invert_colors, 'table' },
         font_style = { config.font_style, 'table' },
+        on_highlights = { config.on_highlights, 'function' },
     })
 
     vim.validate({
