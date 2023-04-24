@@ -114,7 +114,7 @@ H.get_config = function(config)
     return vim.tbl_deep_extend(
         'force',
         NightCity.config,
-        vim.b.focus_config or {},
+        vim.b.nightcity_config or {},
         config or {}
     )
 end
