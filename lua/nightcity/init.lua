@@ -65,6 +65,12 @@ NightCity.load = function()
 
     vim.g.colors_name = 'nightcity'
     vim.o.termguicolors = true
+
+    local config = H.get_config()
+    local ok = require('nightcity.groups').load(config)
+    if not ok then
+        vim.cmd.hi('clear')
+    end
 end
 
 -- Helper functions ===========================================================
