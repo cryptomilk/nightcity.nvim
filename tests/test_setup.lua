@@ -59,6 +59,8 @@ T['setup()']['config table'] = function()
     expect_config('font_style.keywords.italic', true)
     expect_config('font_style.functions.bold', true)
     expect_config('font_style.variables', {})
+
+    expect_config('plugins.default', true)
 end
 
 T['setup()']['validates config argument'] = function()
@@ -75,6 +77,7 @@ T['setup()']['validates config argument'] = function()
     expect_config_error({ terminal_colors = 3 }, 'terminal_colors', 'boolean')
     expect_config_error({ invert_colors = '' }, 'invert_colors', 'table')
     expect_config_error({ font_style = '' }, 'font_style', 'table')
+    expect_config_error({ plugins = '' }, 'plugins', 'table')
 
     expect_config_error(
         { invert_colors = { cursor = 5 } },

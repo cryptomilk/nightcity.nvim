@@ -32,6 +32,7 @@ NightCity.config = {
         variables = {},
         search = { bold = true },
     },
+    plugins = { default = true },
     --- @diagnostic disable-next-line: unused-local
     on_highlights = function(groups, colors) end,
 }
@@ -86,6 +87,7 @@ H.setup_config = function(config)
         terminal_colors = { config.terminal_colors, 'boolean' },
         invert_colors = { config.invert_colors, 'table' },
         font_style = { config.font_style, 'table' },
+        plugins = { config.plugins, 'table' },
         on_highlights = { config.on_highlights, 'function' },
     })
 
@@ -107,6 +109,9 @@ H.setup_config = function(config)
         ['font_style.keywords'] = { config.font_style.keywords, 'table' },
         ['font_style.functions'] = { config.font_style.functions, 'table' },
         ['font_style.variables'] = { config.font_style.variables, 'table' },
+    })
+    vim.validate({
+        ['plugins.default'] = { config.plugins.default, 'boolean' },
     })
 
     return config
