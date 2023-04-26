@@ -758,116 +758,135 @@ H.get_color_groups = function(config)
         ['@lsp.typemod.variable.globalScope'] = { fg = c.lightred },
         ['@lsp.typemod.variable.fileScope'] = { fg = c.lightorange },
         ['@lsp.typemod.variable.functionScop'] = { link = '@variable' },
+    }
 
-        -- GitSigns ==========================================================
-        GitSignsAdd = { fg = c.darkgreen },
-        GitSignsChange = { fg = c.darkcyan },
-        GitSignsDelete = { fg = c.darkred },
+    if H.has_integration(config, 'lewis6991/gitsigns.nvim') then
+        groups.GitSignsAdd = { fg = c.darkgreen }
+        groups.GitSignsChange = { fg = c.darkcyan }
+        groups.GitSignsDelete = { fg = c.darkred }
+    end
 
-        -- Mini ==============================================================
-        MiniCompletionActiveParameter = { underline = true },
+    if H.has_integration(config, 'echasnovski/mini.nvim') then
+        groups.MiniCompletionActiveParameter = { underline = true }
 
-        MiniIndentscopeSymbol = { fg = c.magenta },
-        MiniIndentscopePrefix = { nocombine = true }, -- Make it invisible
+        groups.MiniIndentscopeSymbol = { fg = c.magenta }
+        groups.MiniIndentscopePrefix = { nocombine = true } -- Make it invisible
 
-        MiniStatuslineDevinfo = { fg = c.xgray1, bg = c.xgray6 },
-        MiniStatuslineFileinfo = { fg = c.xgray3, bg = c.xgray7 },
-        MiniStatuslineFilename = { fg = c.xgray3, bg = c.xgray8 },
-        MiniStatuslineInactive = { fg = c.blue, bg = c.black },
-        MiniStatuslineModeCommand = { fg = c.black, bg = c.yellow, bold = true },
-        MiniStatuslineModeInsert = { fg = c.black, bg = c.green, bold = true },
-        MiniStatuslineModeNormal = { fg = c.black, bg = c.blue, bold = true },
-        MiniStatuslineModeOther = { fg = c.black, bg = c.cyan, bold = true },
-        MiniStatuslineModeReplace = { fg = c.black, bg = c.red, bold = true },
-        MiniStatuslineModeVisual = { fg = c.black, bg = c.magenta, bold = true },
+        groups.MiniJump = { sp = c.lightmagenta, undercurl = true }
+        groups.MiniJump2dSpot = { fg = c.lightmagenta, bold = true }
 
-        MiniSurround = { bg = c.orange, fg = c.black },
+        groups.MiniStatuslineDevinfo = { fg = c.xgray1, bg = c.xgray6 }
+        groups.MiniStatuslineFileinfo = { fg = c.xgray3, bg = c.xgray7 }
+        groups.MiniStatuslineFilename = { fg = c.xgray3, bg = c.xgray8 }
+        groups.MiniStatuslineInactive = { fg = c.blue, bg = c.black }
+        groups.MiniStatuslineModeCommand =
+            { fg = c.black, bg = c.yellow, bold = true }
+        groups.MiniStatuslineModeInsert =
+            { fg = c.black, bg = c.green, bold = true }
+        groups.MiniStatuslineModeNormal =
+            { fg = c.black, bg = c.blue, bold = true }
+        groups.MiniStatuslineModeOther =
+            { fg = c.black, bg = c.cyan, bold = true }
+        groups.MiniStatuslineModeReplace =
+            { fg = c.black, bg = c.red, bold = true }
+        groups.MiniStatuslineModeVisual =
+            { fg = c.black, bg = c.magenta, bold = true }
 
-        MiniTestEmphasis = { bold = true },
-        MiniTestFail = { fg = c.red, bold = true },
-        MiniTestPass = { fg = c.green, bold = true },
+        groups.MiniSurround = { bg = c.orange, fg = c.black }
 
-        MiniTrailspace = { bg = c.red },
+        groups.MiniTestEmphasis = { bold = true }
+        groups.MiniTestFail = { fg = c.red, bold = true }
+        groups.MiniTestPass = { fg = c.green, bold = true }
 
-        -- Telescope =========================================================
-        TelescopeNormal = { fg = c.xgray1, bg = darken(c.bg, 0.7, c.black) },
-        TelescopeTitle = { fg = c.yellow },
-        TelescopeSelection = {
+        groups.MiniTrailspace = { bg = c.red }
+    end
+
+    if H.has_integration(config, 'nvim-telescope/telescope.nvim') then
+        groups.TelescopeNormal =
+            { fg = c.xgray1, bg = darken(c.bg, 0.7, c.black) }
+        groups.TelescopeTitle = { fg = c.yellow }
+        groups.TelescopeSelection = {
             fg = c.red,
             bg = darken(c.red, 0.1),
-            -- bold = true,
-        },
-        TelescopePromptPrefix = { fg = c.red },
-        TelescopePromptCounter = { fg = c.yellow, bg = c.xgray8 },
+        }
+        groups.TelescopePromptPrefix = { fg = c.red }
+        groups.TelescopePromptCounter = { fg = c.yellow, bg = c.xgray8 }
+    end
 
-        -- nvim-cmp ==========================================================
-        CmpItemAbbr = { fg = c.white, bg = c.none },
-        CmpItemAbbrDeprecated = { fg = c.xgray1 },
-        CmpItemAbbrMatch = { fg = c.blue, bold = true },
-        CmpItemAbbrMatchFuzzy = { fg = c.blue, undercurl = true },
+    if H.has_integration(config, 'hrsh7th/nvim-cmp') then
+        groups.CmpItemAbbr = { fg = c.white, bg = c.none }
+        groups.CmpItemAbbrDeprecated = { fg = c.xgray1 }
+        groups.CmpItemAbbrMatch = { fg = c.blue, bold = true }
+        groups.CmpItemAbbrMatchFuzzy = { fg = c.blue, undercurl = true }
 
-        CmpItemMenu = { fg = c.xgray3 },
+        groups.CmpItemMenu = { fg = c.xgray3 }
 
-        CmpItemKindDefault = { fg = c.black, bg = c.none },
+        groups.CmpItemKindDefault = { fg = c.black, bg = c.none }
 
-        CmpItemKindKeyword = { fg = c.cyan, bg = c.none },
+        groups.CmpItemKindKeyword = { fg = c.cyan, bg = c.none }
 
-        CmpItemKindVariable = { fg = c.white, bg = c.none },
-        CmpItemKindConstant = { fg = c.orange, bg = c.none },
-        CmpItemKindReference = { fg = c.orange, bg = c.none },
-        CmpItemKindValue = { fg = c.orange, bg = c.none },
-        CmpItemKindCopilot = { fg = c.cyan, bg = c.none },
+        groups.CmpItemKindVariable = { fg = c.white, bg = c.none }
+        groups.CmpItemKindConstant = { fg = c.orange, bg = c.none }
+        groups.CmpItemKindReference = { fg = c.orange, bg = c.none }
+        groups.CmpItemKindValue = { fg = c.orange, bg = c.none }
+        groups.CmpItemKindCopilot = { fg = c.cyan, bg = c.none }
 
-        CmpItemKindFunction = { fg = c.blue, bg = c.none },
-        CmpItemKindMethod = { fg = c.blue, bg = c.none },
-        CmpItemKindConstructor = { fg = c.purple, bg = c.none },
+        groups.CmpItemKindFunction = { fg = c.blue, bg = c.none }
+        groups.CmpItemKindMethod = { fg = c.blue, bg = c.none }
+        groups.CmpItemKindConstructor = { fg = c.purple, bg = c.none }
 
-        CmpItemKindClass = { fg = c.purple, bg = c.none },
-        CmpItemKindInterface = { fg = c.purple, bg = c.none },
-        CmpItemKindStruct = { fg = c.aqua, bg = c.none },
-        CmpItemKindEvent = { fg = c.aqua, bg = c.none },
-        CmpItemKindEnum = { fg = c.aqua, bg = c.none },
-        CmpItemKindUnit = { fg = c.aqua, bg = c.none },
+        groups.CmpItemKindClass = { fg = c.purple, bg = c.none }
+        groups.CmpItemKindInterface = { fg = c.purple, bg = c.none }
+        groups.CmpItemKindStruct = { fg = c.aqua, bg = c.none }
+        groups.CmpItemKindEvent = { fg = c.aqua, bg = c.none }
+        groups.CmpItemKindEnum = { fg = c.aqua, bg = c.none }
+        groups.CmpItemKindUnit = { fg = c.aqua, bg = c.none }
 
-        CmpItemKindModule = { fg = c.yellow, bg = c.none },
+        groups.CmpItemKindModule = { fg = c.yellow, bg = c.none }
 
-        CmpItemKindProperty = { fg = c.green, bg = c.none },
-        CmpItemKindField = { fg = c.green, bg = c.none },
-        CmpItemKindTypeParameter = { fg = c.orange, bg = c.none },
-        CmpItemKindEnumMember = { fg = c.purple, bg = c.none },
-        CmpItemKindOperator = { fg = c.green, bg = c.none },
+        groups.CmpItemKindProperty = { fg = c.green, bg = c.none }
+        groups.CmpItemKindField = { fg = c.green, bg = c.none }
+        groups.CmpItemKindTypeParameter = { fg = c.orange, bg = c.none }
+        groups.CmpItemKindEnumMember = { fg = c.purple, bg = c.none }
+        groups.CmpItemKindOperator = { fg = c.green, bg = c.none }
 
-        CmpItemKindSnippet = { fg = c.purple, bg = c.none },
+        groups.CmpItemKindSnippet = { fg = c.purple, bg = c.none }
+    end
 
-        -- WhichKey ==========================================================
-        WhichKey = { fg = c.magenta },
-        WhichKeyGroup = { fg = c.lightcyan },
-        WhichKeyDesc = { fg = c.lightaqua },
-        WhichKeySeparator = { fg = c.xgray4 },
-        WhichKeyFloat = { bg = c.xgray8 },
-        WhichKeyValue = { fg = c.xgray3 },
+    if H.has_integration(config, 'folke/which-key.nvim') then
+        -- the key
+        groups.WhichKey = { fg = c.magenta }
+        -- a group
+        groups.WhichKeyGroup = { fg = c.lightcyan }
+        -- the label of the key
+        groups.WhichKeyDesc = { fg = c.lightaqua }
+        -- the separator between the key and its label
+        groups.WhichKeySeparator = { fg = c.xgray4 }
+    end
 
-        -- Trouble ===========================================================
-        TroubleNormal = { fg = c.white, bg = c.xgray7 },
-        TroubleText = { fg = c.xgray1 },
-        TroubleCount = { fg = c.magenta },
+    if H.has_integration(config, 'folke/lsp-trouble.nvim') then
+        groups.TroubleNormal = { fg = c.white, bg = c.xgray7 }
+        groups.TroubleText = { fg = c.xgray1 }
+        groups.TroubleCount = { fg = c.magenta }
+    end
 
-        -- LspSaga ===========================================================
-        TitleString = { fg = c.yellow },
-        SagaNormal = { bg = darken(c.bg, 0.7, c.black) },
-        SagaBorder = { fg = c.cyan, bg = darken(c.bg, 0.7, c.black) },
+    if H.has_integration(config, 'nvimdev/lspsage.nvim') then
+        groups.TitleString = { fg = c.yellow }
+        groups.SagaNormal = { bg = darken(c.bg, 0.7, c.black) }
+        groups.SagaBorder = { fg = c.cyan, bg = darken(c.bg, 0.7, c.black) }
 
-        RenameNormal = { fg = c.white, bg = darken(c.bg, 0.7, c.black) },
+        groups.RenameNormal = { fg = c.white, bg = darken(c.bg, 0.7, c.black) }
+    end
 
-        -- Treesitter Rainbow Paranthesis ====================================
-        TSRainbowRed = { fg = c.red },
-        TSRainbowOrange = { fg = c.orange },
-        TSRainbowYellow = { fg = c.yellow },
-        TSRainbowGreen = { fg = c.green },
-        TSRainbowBlue = { fg = c.blue },
-        TSRainbowViolet = { fg = c.purple },
-        TSRainbowCyan = { fg = c.cyan },
-    }
+    if H.has_integration(config, 'HiPhish/nvim-ts-rainbow2') then
+        groups.TSRainbowRed = { fg = c.red }
+        groups.TSRainbowOrange = { fg = c.orange }
+        groups.TSRainbowYellow = { fg = c.yellow }
+        groups.TSRainbowGreen = { fg = c.green }
+        groups.TSRainbowBlue = { fg = c.blue }
+        groups.TSRainbowViolet = { fg = c.purple }
+        groups.TSRainbowCyan = { fg = c.cyan }
+    end
     ---@diagnostic disable-next-line: unused-local
     local rainbow_test = { { { { { { {} } } } } } }
 
@@ -932,6 +951,18 @@ H.rgb_blend_alpha = function(colorA, colorB, alpha)
             + blend_alpha(A[2], B[2]) * 0x100
             + blend_alpha(A[3], B[3])
     )
+end
+
+---@param config Config
+---@param name string
+---@return boolean
+H.has_integration = function(config, name)
+    local entry = config.plugins[name]
+    if entry == nil then
+        return config.plugins.default
+    end
+
+    return entry
 end
 
 return M
