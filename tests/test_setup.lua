@@ -18,6 +18,9 @@ local reload_module = function(config)
     unload_module()
     load_module(config)
 end
+local expect_config = function(field, value)
+    eq(child.lua_get('NightCity.config.' .. field), value)
+end
 
 -- Output test set ============================================================
 T = new_set({
@@ -40,10 +43,6 @@ end
 
 T['setup()']['config table'] = function()
     -- Check default values
-    local expect_config = function(field, value)
-        eq(child.lua_get('NightCity.config.' .. field), value)
-    end
-
     expect_config('style', 'kabuki')
     expect_config('terminal_colors', true)
 
@@ -140,6 +139,11 @@ T['setup()']['validates config argument'] = function()
     )
 
     expect_config_error({ on_highlights = '' }, 'on_highlights', 'function')
+end
+
+T['setup()']['validate config style afterlife'] = function()
+    reload_module({ style = 'afterlife' })
+    expect_config('style', 'afterlife')
 end
 
 return T
