@@ -53,7 +53,8 @@ NightCity.setup = function(config)
     H.apply_config(config)
 end
 
-NightCity.load = function()
+---@param style string|nil
+NightCity.load = function(style)
     if vim.fn.has('nvim-0.9') ~= 1 then
         vim.notify_once('nightcity: this colorscheme requires neovim >= 0.9')
         return
@@ -68,7 +69,7 @@ NightCity.load = function()
     vim.o.termguicolors = true
 
     local config = H.get_config()
-    local ok = require('nightcity.groups').load(config)
+    local ok = require('nightcity.groups').load(config, style)
     if not ok then
         vim.cmd.hi('clear')
     end

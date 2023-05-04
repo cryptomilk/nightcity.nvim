@@ -26,9 +26,10 @@ local H = {}
 -- Module functions ==========================================================
 
 ---@param config table
+---@param style string|nil
 ---@return boolean
-M.load = function(config)
-    local groups = H.get_color_groups(config)
+M.load = function(config, style)
+    local groups = H.get_color_groups(config, style)
     if not groups then
         vim.notify_once('nightcity: failed to load color groups')
         return false
@@ -83,9 +84,11 @@ H.set_terminal_colors = function(config)
 end
 
 --- @param config table
+--- @param style string|nil
 --- @return HighlightGroups|nil
-H.get_color_groups = function(config)
-    local c = palette.get_colors(config.style)
+H.get_color_groups = function(config, style)
+    style = style or config.style
+    local c = palette.get_colors(style)
     if not c then
         return nil
     end
