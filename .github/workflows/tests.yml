@@ -4,13 +4,11 @@ name: Run tests
 on:
   push:
     branches-ignore: [sync, stable]
-    paths: ['colors/**', 'lua/**', 'tests/**']
   pull_request:
     branches-ignore: [sync, stable]
-    paths: ['colors/**', 'lua/**', 'tests/**']
 
 jobs:
-  build:
+  run-tests:
     name: Run tests
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -20,6 +18,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: true
       - run: date +%F > todays-date
       - name: Restore cache for today's nightly.
         uses: actions/cache@v3
