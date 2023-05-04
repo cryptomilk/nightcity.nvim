@@ -1,0 +1,31 @@
+---
+name: Linting and style checking
+
+on:
+  push:
+    branches-ignore: [sync, stable]
+  pull_request:
+    branches-ignore: [sync, stable]
+
+jobs:
+  stylua:
+    name: Formatting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: JohnnyMorganz/stylua-action@1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: v0.14.0
+          # CLI arguments
+          args: --color always --check .
+
+  case-sensitivity:
+    name: File case sensitivity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Check Case Sensitivity
+        uses: credfeto/action-case-checker@v1.2.1
