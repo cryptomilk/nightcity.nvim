@@ -1,0 +1,173 @@
+*nightcity.nvim.txt*        For Neovim >= 0.9.0       Last change: 2023 May 04
+
+==============================================================================
+Table of Contents                           *nightcity.nvim-table-of-contents*
+
+1. Night City                                      |nightcity.nvim-night-city|
+  - Kabuki                                  |nightcity.nvim-night-city-kabuki|
+  - Afterlife                            |nightcity.nvim-night-city-afterlife|
+  - Requirements                      |nightcity.nvim-night-city-requirements|
+  - Features                              |nightcity.nvim-night-city-features|
+  - Installation                      |nightcity.nvim-night-city-installation|
+  - Usage                                    |nightcity.nvim-night-city-usage|
+  - Configuration                    |nightcity.nvim-night-city-configuration|
+  - Fix color and underlines in tmux|nightcity.nvim-night-city-fix-color-and-underlines-in-tmux|
+
+==============================================================================
+1. Night City                                      *nightcity.nvim-night-city*
+
+WORK IN PROGRESS!
+
+This is theme is inspired by Inkpot
+<https://www.vim.org/scripts/script.php?script_id=1143>, Jellybeans
+<https://www.vim.org/scripts/script.php?script_id=2555>, Grubbox
+<https://github.com/gruvbox-community/> and Tokyonight
+<https://github.com/folke/tokyonight.nvim/>.
+
+
+KABUKI                                      *nightcity.nvim-night-city-kabuki*
+
+TODO
+
+
+AFTERLIFE                                *nightcity.nvim-night-city-afterlife*
+
+TODO
+
+
+REQUIREMENTS                          *nightcity.nvim-night-city-requirements*
+
+
+- Neovim >= 0.9.0
+
+
+FEATURES                                  *nightcity.nvim-night-city-features*
+
+
+- Support for TreeSitter and LSP
+- Vim terminal colors
+- Support for plugins
+
+
+PLUGIN SUPPORT ~
+
+
+- Cmp <https://github.com/hrsh7th/nvim-cmp>
+- Git Signs <https://github.com/lewis6991/gitsigns.nvim>
+- |LSP Diagnostics|
+- LSP Saga <https://github.com/nvimdev/lspsaga.nvim>
+- LSP Trouble <https://github.com/folke/lsp-trouble.nvim>
+- Mini <https://github.com/echasnovski/mini.nvim>
+- Telescope <https://github.com/nvim-telescope/telescope.nvim>
+- TreeSitter <https://github.com/nvim-treesitter/nvim-treesitter>
+- TS Rainbow Parenthesis <https://github.com/HiPhish/nvim-ts-rainbow2>
+- WhichKey <https://github.com/folke/which-key.nvim>
+
+You can configure which plugin support you want to enable or disable. See
+_Disabling Plugins_ below.
+
+
+INSTALLATION                          *nightcity.nvim-night-city-installation*
+
+Here are code snippets for some common installation methods (use only one):
+
+With folke/lazy.nvim ~
+
+Github repoBranchCode snippet'focus.nvim' libraryMain{ 'cryptomilk/nightcity.nvim', version = false },Stable{ 'cryptomilk/nightcity.nvim', version = ’’ },With wbthomason/packer.nvim ~
+
+Github repoBranchCode snippet'focus.nvim' libraryMainuse 'cryptomilk/nightcity.nvim'With junegunn/vim-plug ~
+
+Github repoBranchCode snippet'focus.nvim' libraryMainPlug 'cryptomilk/nightcity.nvim'
+
+
+USAGE                                        *nightcity.nvim-night-city-usage*
+
+Enable the colorscheme:
+
+>lua
+    vim.cmd.colorscheme('nightcity')
+<
+
+
+CONFIGURATION                        *nightcity.nvim-night-city-configuration*
+
+
+  configuration needs to be set **BEFORE** loading the color scheme with
+  `colorscheme nightcity`
+_FIXME: Document options_
+
+>lua
+        -- kabuki or afterlife
+        style = 'kabuki',
+        terminal_colors = true,
+        invert_colors = {
+            cursor = true,
+            diff = true,
+            error = true,
+            search = true,
+            selection = false,
+            signs = false,
+            statusline = true,
+            tabline = false,
+        },
+        font_style = {
+            comments = { italic = true },
+            keywords = { italic = true },
+            functions = { bold = true },
+            variables = {},
+            search = { bold = true },
+        },
+        plugins = { default = true },
+        on_highlights = function(groups, colors) end,
+<
+
+
+DISABLING PLUGINS ~
+
+_FIXME: Add better documentation_
+
+>lua
+    require('nightcity').setup({
+        plugins = {
+            default = true,
+            ['hrsh7th/nvim-cmp'] = false
+        }
+    })
+<
+
+
+OVERRIDING COLORS & HIGHLIGHT GROUPS ~
+
+_FIXME: Add better documentation_
+
+>lua
+    require('nightcity').setup({
+        on_highlights = function(groups, c)
+            groups.String = { fg = c.green, bg = c.none }
+    
+            groups['@lsp.typemod.parameter.readonly'] = { italic = true }
+            groups['@lsp.typemod.variable.readonly']  = { italic = true }
+        end
+    })
+<
+
+
+FIX COLOR AND UNDERLINES IN TMUX*nightcity.nvim-night-city-fix-color-and-underlines-in-tmux*
+
+_FIXME: Add better documentation_
+
+>sh
+    set -g default-terminal "tmux-256color"
+     Truecolor (RGB) support
+    set -as terminal-overrides ',:Tc'
+     Undercurl support
+     https://github.com/tmux/tmux/issues/1492issuecomment-427939241
+    set -as terminal-overrides ',:Smulx=\E[4::%p1%dm'
+     Underscore colors
+     https://github.com/tmux/tmux/pull/1771issuecomment-500906522
+    set -as terminal-overrides ',:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
+<
+
+Generated by panvimdoc <https://github.com/kdheepak/panvimdoc>
+
+vim:tw=78:ts=8:noet:ft=help:norl:
