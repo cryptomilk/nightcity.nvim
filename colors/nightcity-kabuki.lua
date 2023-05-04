@@ -1,0 +1,1 @@
+require('nightcity').load('kabuki')
