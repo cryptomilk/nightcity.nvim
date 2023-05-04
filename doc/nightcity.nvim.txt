@@ -73,11 +73,11 @@ Here are code snippets for some common installation methods (use only one):
 
 With folke/lazy.nvim ~
 
-Github repoBranchCode snippet'focus.nvim' libraryMain{ 'cryptomilk/nightcity.nvim', version = false },Stable{ 'cryptomilk/nightcity.nvim', version = ’’ },With wbthomason/packer.nvim ~
+Github repoBranchCode snippet'nightcity.nvim' colorschemeMain{ 'cryptomilk/nightcity.nvim', version = false },Stable{ 'cryptomilk/nightcity.nvim', version = ’’ },With wbthomason/packer.nvim ~
 
-Github repoBranchCode snippet'focus.nvim' libraryMainuse 'cryptomilk/nightcity.nvim'With junegunn/vim-plug ~
+Github repoBranchCode snippet'nightcity.nvim' colorschemeMainuse 'cryptomilk/nightcity.nvim'With junegunn/vim-plug ~
 
-Github repoBranchCode snippet'focus.nvim' libraryMainPlug 'cryptomilk/nightcity.nvim'
+Github repoBranchCode snippet'nightcity.nvim' colorschemeMainPlug 'cryptomilk/nightcity.nvim'
 
 
 USAGE                                        *nightcity.nvim-night-city-usage*
