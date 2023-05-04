@@ -10,7 +10,9 @@
 local M = {}
 local H = {}
 
---- @class ColorPalette
+---@class ColorPalette
+
+--stylua: ignore
 local kabuki = {
     none          = 'NONE',
 
@@ -64,6 +66,7 @@ local kabuki = {
     text          = '#f9efc5',
 }
 
+--stylua: ignore
 local afterlife = {
     none          = kabuki.none,
 
