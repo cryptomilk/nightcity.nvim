@@ -405,7 +405,10 @@ H.get_color_groups = function(config, style)
         -- Visual        Visual mode selection.
         Visual = { bg = c.xgray5, reverse = config.invert_colors.selection },
         -- VisualNOS    Visual mode selection when vim is "Not Owning the Selection".
-        VisualNOS = { bg = c.xgray5, reverse = config.invert_colors.selection },
+        VisualNOS = {
+            bg = c.xgray5,
+            reverse = config.invert_colors.selection,
+        },
 
         -- WarningMsg    Warning messages.
         WarningMsg = { fg = c.red, bold = true },
