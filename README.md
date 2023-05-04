@@ -57,7 +57,7 @@ Here are code snippets for some common installation methods (use only one):
     </thead>
     <tbody>
         <tr>
-            <td rowspan=2>'focus.nvim' library</td>
+            <td rowspan=2>'nightcity.nvim' colorscheme</td>
             <td>Main</td> <td><code>{ 'cryptomilk/nightcity.nvim', version = false },</code></td>
         </tr>
         <tr>
@@ -78,7 +78,7 @@ Here are code snippets for some common installation methods (use only one):
     </thead>
     <tbody>
         <tr>
-            <td rowspan=2>'focus.nvim' library</td>
+            <td rowspan=2>'nightcity.nvim' colorscheme</td>
             <td>Main</td> <td><code>use 'cryptomilk/nightcity.nvim'</code></td>
         </tr>
     </tbody>
@@ -96,7 +96,7 @@ Here are code snippets for some common installation methods (use only one):
     </thead>
     <tbody>
         <tr>
-            <td rowspan=2>'focus.nvim' library</td>
+            <td rowspan=2>'nightcity.nvim' colorscheme</td>
             <td>Main</td> <td><code>Plug 'cryptomilk/nightcity.nvim'</code></td>
         </tr>
     </tbody>
