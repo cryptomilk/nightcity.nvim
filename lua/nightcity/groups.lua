@@ -881,7 +881,8 @@ H.get_color_groups = function(config, style)
         groups.SagaNormal = { bg = darken(c.bg, 0.7, c.black) }
         groups.SagaBorder = { fg = c.cyan, bg = darken(c.bg, 0.7, c.black) }
 
-        groups.RenameNormal = { fg = c.white, bg = darken(c.bg, 0.7, c.black) }
+        groups.RenameNormal =
+            { fg = c.white, bg = darken(c.bg, 0.7, c.black) }
     end
 
     if H.has_integration(config, 'HiPhish/nvim-ts-rainbow2') then
