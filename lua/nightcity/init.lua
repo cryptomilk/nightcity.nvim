@@ -102,8 +102,14 @@ H.setup_config = function(config)
             'boolean',
         },
         ['invert_colors.signs'] = { config.invert_colors.signs, 'boolean' },
-        ['invert_colors.statusline'] = { config.invert_colors.statusline, 'boolean' },
-        ['invert_colors.tabline'] = { config.invert_colors.tabline, 'boolean' },
+        ['invert_colors.statusline'] = {
+            config.invert_colors.statusline,
+            'boolean',
+        },
+        ['invert_colors.tabline'] = {
+            config.invert_colors.tabline,
+            'boolean',
+        },
     })
     vim.validate({
         ['font_style.comments'] = { config.font_style.comments, 'table' },
