@@ -115,16 +115,15 @@ vim.cmd.colorscheme('nightcity')
 
 ## Configuration
 
-> ❗️ configuration needs to be set **BEFORE** loading the color scheme with
+> ❗️The configuration needs to be set **BEFORE** loading the color scheme with
 > `colorscheme nightcity`
-
-*FIXME: Document options*
 
 ```lua
     -- kabuki or afterlife
-    style = 'kabuki',
-    terminal_colors = true,
+    style = 'kabuki', -- The theme comes in two styles: kabuki or afterlife
+    terminal_colors = true, -- Use colors used when opening a `:terminal`
     invert_colors = {
+        -- Invert colors for the following syntax groups
         cursor = true,
         diff = true,
         error = true,
@@ -135,19 +134,29 @@ vim.cmd.colorscheme('nightcity')
         tabline = false,
     },
     font_style = {
+        -- Style to be applied to different syntax groups
         comments = { italic = true },
         keywords = { italic = true },
         functions = { bold = true },
         variables = {},
         search = { bold = true },
     },
+    -- Plugin integrations. Use `default = false` to disable all integrations.
     plugins = { default = true },
+    --- You can override specific highlights to use other groups or a hex color
+    --- function will be called with a Highlights and ColorScheme table
+    ---@param groups Highlight groups
+    ---@param colors ColorScheme
     on_highlights = function(groups, colors) end,
 ```
 
-### Disabling Plugins
+### Disabling plugin support
 
-*FIXME: Add better documentation*
+`config.plugins` defines for which supported plugins highlight groups will
+be created. Limiting number of integrations slightly decreases startup time.
+It is a table with boolean (`true`/`false`) values which are applied as follows:
+- If plugin name (as listed in above) has an entry, it is used.
+- Otherwise `config.plugins.default` is used.
 
 ```lua
 require('nightcity').setup({
@@ -160,7 +169,9 @@ require('nightcity').setup({
 
 ### Overriding Colors & Highlight Groups
 
-*FIXME: Add better documentation*
+With `config.on_highlights(highlights, colors)` you can override highlight
+groups. This can be used to better match your style or enable certain features
+of the LSP you might prefer.
 
 ```lua
 require('nightcity').setup({
@@ -175,7 +186,8 @@ require('nightcity').setup({
 
 ## Fix color and underlines in tmux
 
-*FIXME: Add better documentation*
+In order to show colors and undercurls and underlines in tmux probably you need
+to adjust your config file and add the following:
 
 ```sh
 set -g default-terminal "tmux-256color"
