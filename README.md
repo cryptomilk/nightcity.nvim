@@ -10,11 +10,11 @@ and [Tokyonight](https://github.com/folke/tokyonight.nvim/).
 
 ## Kabuki
 
-TODO
+![image](https://user-images.githubusercontent.com/545480/253724501-eae35ecb-b99e-499f-b43e-74f469e5da42.png)
 
 ## Afterlife
 
-TODO
+![image](https://user-images.githubusercontent.com/545480/253724503-9bb733d8-4e2d-4ba7-b633-0406dc04be85.png)
 
 ## Requirements
 
