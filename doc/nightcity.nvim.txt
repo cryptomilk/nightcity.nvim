@@ -1,4 +1,4 @@
-*nightcity.nvim.txt*       For Neovim >= 0.9.0       Last change: 2023 July 15
+*nightcity.nvim.txt*     For Neovim >= 0.9.0    Last change: 2023 September 20
 
 ==============================================================================
 Table of Contents                           *nightcity.nvim-table-of-contents*
@@ -163,14 +163,14 @@ to adjust your config file and add the following:
 
 >sh
     set -g default-terminal "tmux-256color"
-     Truecolor (RGB) support
-    set -as terminal-overrides ',:Tc'
-     Undercurl support
-     https://github.com/tmux/tmux/issues/1492issuecomment-427939241
-    set -as terminal-overrides ',:Smulx=\E[4::%p1%dm'
-     Underscore colors
-     https://github.com/tmux/tmux/pull/1771issuecomment-500906522
-    set -as terminal-overrides ',:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
+    # Truecolor (RGB) support
+    set -as terminal-overrides ',*:Tc'
+    # Undercurl support
+    # https://github.com/tmux/tmux/issues/1492#issuecomment-427939241
+    set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'
+    # Underscore colors
+    # https://github.com/tmux/tmux/pull/1771#issuecomment-500906522
+    set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
 <
 
 ==============================================================================
