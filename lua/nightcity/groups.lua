@@ -876,6 +876,13 @@ H.get_color_groups = function(config, style)
         groups.TroubleCount = { fg = c.magenta }
     end
 
+    if H.has_integration(config, 'folke/flash.nvim') then
+        groups.FlashBackdrop = { fg = c.xgray3 }
+        groups.FlashMatch = { fg = c.magenta, bg = c.xgray3 }
+        groups.FlashCurrent = { fg = c.yellow, bg = c.xgray9 }
+        groups.FlashLabel = { fg = c.magenta, bg = c.xgray9 }
+    end
+
     if H.has_integration(config, 'nvimdev/lspsage.nvim') then
         groups.TitleString = { fg = c.yellow }
         groups.SagaNormal = { bg = darken(c.bg, 0.7, c.black) }
