@@ -709,6 +709,8 @@ H.get_color_groups = function(config, style)
         DiagnosticInfo = { fg = c.blue },
         -- Used as the base highlight group. Other Diagnostic highlights link to this by default
         DiagnosticHint = { fg = c.aqua },
+        -- Used as the base highlight group.  Other Diagnostic highlights link to this by default
+        DiagnosticOk = { fg = c.green },
 
         -- Used for "Error" diagnostic virtual text
         DiagnosticVirtualTextError = {
@@ -739,6 +741,13 @@ H.get_color_groups = function(config, style)
         DiagnosticUnderlineInfo = { undercurl = true, sp = c.blue },
         -- Used to underline "Hint" diagnostics
         DiagnosticUnderlineHint = { undercurl = true, sp = c.aqua },
+        -- Used to underline "Ok" diagnostics.
+        DiagnosticUnderlineOk = { undercurl = true, sp = c.green },
+
+        -- Used for deprecated or obsolete code.
+        DiagnosticDeprecated = { sp = c.orange, strikethrough = true },
+        -- Used for unnecessary or unused code.
+        DiagnosticUnnecessary = { fg = c.xgray4 },
 
         -- Semantic token ====================================================
         -- See `:help lsp-semantic-highlight`
