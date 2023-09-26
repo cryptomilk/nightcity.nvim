@@ -1,11 +1,9 @@
 # 🏙 Night City
 
-WORK IN PROGRESS!
-
 This is theme is inspired by
 [Inkpot](https://www.vim.org/scripts/script.php?script_id=1143),
 [Jellybeans](https://www.vim.org/scripts/script.php?script_id=2555),
-[Grubbox](https://github.com/gruvbox-community/)
+[Gruvbbox](https://github.com/gruvbox-community/)
 and [Tokyonight](https://github.com/folke/tokyonight.nvim/).
 
 ## Kabuki
@@ -30,6 +28,7 @@ and [Tokyonight](https://github.com/folke/tokyonight.nvim/).
 
 - [Cmp](https://github.com/hrsh7th/nvim-cmp)
 - [Git Signs](https://github.com/lewis6991/gitsigns.nvim)
+- [Flash](https://github.com/folke/flash.nvim)
 - [LSP Diagnostics](https://neovim.io/doc/user/lsp.html)
 - [LSP Saga](https://github.com/nvimdev/lspsaga.nvim)
 - [LSP Trouble](https://github.com/folke/lsp-trouble.nvim)
