@@ -1,4 +1,4 @@
-*nightcity.nvim.txt*     For Neovim >= 0.9.0    Last change: 2023 September 20
+*nightcity.nvim.txt*     For Neovim >= 0.9.0    Last change: 2023 September 26
 
 ==============================================================================
 Table of Contents                           *nightcity.nvim-table-of-contents*
@@ -16,11 +16,9 @@ Table of Contents                           *nightcity.nvim-table-of-contents*
 ==============================================================================
 1. Night City                                      *nightcity.nvim-night-city*
 
-WORK IN PROGRESS!
-
 This is theme is inspired by Inkpot
 <https://www.vim.org/scripts/script.php?script_id=1143>, Jellybeans
-<https://www.vim.org/scripts/script.php?script_id=2555>, Grubbox
+<https://www.vim.org/scripts/script.php?script_id=2555>, Gruvbbox
 <https://github.com/gruvbox-community/> and Tokyonight
 <https://github.com/folke/tokyonight.nvim/>.
 
@@ -47,6 +45,7 @@ PLUGIN SUPPORT ~
 
 - Cmp <https://github.com/hrsh7th/nvim-cmp>
 - Git Signs <https://github.com/lewis6991/gitsigns.nvim>
+- Flash <https://github.com/folke/flash.nvim>
 - |LSP Diagnostics|
 - LSP Saga <https://github.com/nvimdev/lspsaga.nvim>
 - LSP Trouble <https://github.com/folke/lsp-trouble.nvim>
