@@ -913,6 +913,10 @@ H.get_color_groups = function(config, style)
         groups.RenameNormal = { fg = c.white, bg = darken(c.bg, 0.7, c.black) }
     end
 
+    if H.has_integration(config, 'ray-x/lsp_signature.nvim') then
+        groups.LspSignatureActiveParameter = { bold = true }
+    end
+
     if H.has_integration(config, 'HiPhish/nvim-ts-rainbow2') then
         groups.TSRainbowRed = { fg = c.red }
         groups.TSRainbowOrange = { fg = c.orange }

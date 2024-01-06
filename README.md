@@ -31,6 +31,7 @@ and [Tokyonight](https://github.com/folke/tokyonight.nvim/).
 - [Flash](https://github.com/folke/flash.nvim)
 - [LSP Diagnostics](https://neovim.io/doc/user/lsp.html)
 - [LSP Saga](https://github.com/nvimdev/lspsaga.nvim)
+- [LSP Signature](https://github.com/ray-x/lsp_signature.nvim)
 - [LSP Trouble](https://github.com/folke/lsp-trouble.nvim)
 - [Mini](https://github.com/echasnovski/mini.nvim)
 - [Telescope](https://github.com/nvim-telescope/telescope.nvim)
