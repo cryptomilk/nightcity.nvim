@@ -1,4 +1,4 @@
-*nightcity.nvim.txt*     For Neovim >= 0.9.0    Last change: 2023 September 26
+*nightcity.nvim.txt*      For Neovim >= 0.9.0     Last change: 2024 January 06
 
 ==============================================================================
 Table of Contents                           *nightcity.nvim-table-of-contents*
@@ -48,6 +48,7 @@ PLUGIN SUPPORT ~
 - Flash <https://github.com/folke/flash.nvim>
 - |LSP Diagnostics|
 - LSP Saga <https://github.com/nvimdev/lspsaga.nvim>
+- LSP Signature <https://github.com/ray-x/lsp_signature.nvim>
 - LSP Trouble <https://github.com/folke/lsp-trouble.nvim>
 - Mini <https://github.com/echasnovski/mini.nvim>
 - Telescope <https://github.com/nvim-telescope/telescope.nvim>
