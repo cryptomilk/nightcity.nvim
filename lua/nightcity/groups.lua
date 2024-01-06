@@ -842,6 +842,8 @@ H.get_color_groups = function(config, style)
     end
 
     if H.has_integration(config, 'hrsh7th/nvim-cmp') then
+        groups.CmpGhostText = { fg = c.black, bg = c.none }
+
         groups.CmpItemAbbr = { fg = c.white, bg = c.none }
         groups.CmpItemAbbrDeprecated = { fg = c.xgray1 }
         groups.CmpItemAbbrMatch = { fg = c.blue, bold = true }
