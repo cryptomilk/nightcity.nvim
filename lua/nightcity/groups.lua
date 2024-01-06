@@ -690,6 +690,16 @@ H.get_color_groups = function(config, style)
         ['@tag.delimiter'] = { link = 'Delimiter' },
 
         --
+        -- Markdown
+        --
+        ["@text.title.1.markdown"] = { fg = c.magenta, bold = true },
+        ["@text.title.2.markdown"] = { fg = c.lightred, bold = true},
+        ["@text.title.3.markdown"] = { fg = c.yellow, bold = true },
+        ["@text.title.4.markdown"] = { fg = c.green, bold = true},
+        ["@text.title.5.markdown"] = { fg = c.aqua, bold = true},
+        ["@text.title.6.markdown"] = { fg = c.blue, bold = true},
+
+        --
         -- Conceal
         --
         -- @conceal ; for captures that are only used for concealing
