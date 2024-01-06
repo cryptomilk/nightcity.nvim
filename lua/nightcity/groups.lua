@@ -623,6 +623,8 @@ H.get_color_groups = function(config, style)
 
         -- @namespace        ; modules or namespaces
         ['@namespace'] = { fg = c.white },
+        -- @namespace.builtin ; built-in variable names (e.g. `this`)
+        ['@namespace.builtin'] = { link = '@constructor' },
         -- @symbol           ; symbols or atoms
         ['@symbol'] = { link = 'Identifier' },
         -- @macro            ; macros
