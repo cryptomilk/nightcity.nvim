@@ -10,11 +10,11 @@ enum scope {
     FILE_SCOPE2
 };
 
-extern int globalScope;
-static enum scope fileScope;
+extern int globalScope; /* @lsp.typemod.variable.globalScope */
+static enum scope fileScope; /* @lsp.typemod.variable.fileScope */
 
 void wurst(struct foobar *parameter) {
-  int functionScope = 3;
+  int functionScope = 3; /* @lsp.typemod.variable.functionScop, @variable */
   const char *wurst = "brot";
 
   globalScope = 42;
@@ -47,6 +47,7 @@ int main(int argc, char *argv[]) {
   struct foobar s = {
       .wurst = '0',
   };
+  static int64_t x; /* @lsp.typemod.variable.static */
 
   wurst(&s);
 

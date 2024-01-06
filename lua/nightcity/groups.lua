@@ -785,6 +785,7 @@ H.get_color_groups = function(config, style)
         ['@lsp.typemod.variable.globalScope'] = { fg = c.lightred },
         ['@lsp.typemod.variable.fileScope'] = { fg = c.lightorange },
         ['@lsp.typemod.variable.functionScop'] = { link = '@variable' },
+        ["@lsp.typemod.variable.static"] = { italic = true },
     }
 
     if H.has_integration(config, 'lewis6991/gitsigns.nvim') then
