@@ -692,12 +692,12 @@ H.get_color_groups = function(config, style)
         --
         -- Markdown
         --
-        ["@text.title.1.markdown"] = { fg = c.magenta, bold = true },
-        ["@text.title.2.markdown"] = { fg = c.lightred, bold = true},
-        ["@text.title.3.markdown"] = { fg = c.yellow, bold = true },
-        ["@text.title.4.markdown"] = { fg = c.green, bold = true},
-        ["@text.title.5.markdown"] = { fg = c.aqua, bold = true},
-        ["@text.title.6.markdown"] = { fg = c.blue, bold = true},
+        ['@text.title.1.markdown'] = { fg = c.magenta, bold = true },
+        ['@text.title.2.markdown'] = { fg = c.lightred, bold = true },
+        ['@text.title.3.markdown'] = { fg = c.yellow, bold = true },
+        ['@text.title.4.markdown'] = { fg = c.green, bold = true },
+        ['@text.title.5.markdown'] = { fg = c.aqua, bold = true },
+        ['@text.title.6.markdown'] = { fg = c.blue, bold = true },
 
         --
         -- Conceal
@@ -785,7 +785,7 @@ H.get_color_groups = function(config, style)
         ['@lsp.typemod.variable.globalScope'] = { fg = c.lightred },
         ['@lsp.typemod.variable.fileScope'] = { fg = c.lightorange },
         ['@lsp.typemod.variable.functionScop'] = { link = '@variable' },
-        ["@lsp.typemod.variable.static"] = { italic = true },
+        ['@lsp.typemod.variable.static'] = { italic = true },
     }
 
     if H.has_integration(config, 'lewis6991/gitsigns.nvim') then
