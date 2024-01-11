@@ -11,7 +11,6 @@ local M = {}
 local H = {}
 
 ---@class ColorPalette
-
 --stylua: ignore
 local kabuki = {
     none          = 'NONE',
