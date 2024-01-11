@@ -314,7 +314,7 @@ H.get_color_groups = function(config, style)
         --         and other characters that do not really exist in the text
         --         (e.g., ">" displayed when a double-wide character doesn't
         --         fit at the end of the line). See also |hl-EndOfBuffer|.
-        NonText = { bg = c.xgray2 },
+        NonText = { link = 'Whitespace' },
 
         -- FloatBorder  Border of floating windows.
         FloatBorder = { fg = c.xgray1, bg = darken(c.bg, 0.7, c.black) },
