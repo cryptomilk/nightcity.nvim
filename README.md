@@ -29,6 +29,7 @@ and [Tokyonight](https://github.com/folke/tokyonight.nvim/).
 - [Cmp](https://github.com/hrsh7th/nvim-cmp)
 - [Git Signs](https://github.com/lewis6991/gitsigns.nvim)
 - [Flash](https://github.com/folke/flash.nvim)
+- [Indent-Blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
 - [LSP Diagnostics](https://neovim.io/doc/user/lsp.html)
 - [LSP Saga](https://github.com/nvimdev/lspsaga.nvim)
 - [LSP Signature](https://github.com/ray-x/lsp_signature.nvim)

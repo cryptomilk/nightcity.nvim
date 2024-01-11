@@ -919,6 +919,11 @@ H.get_color_groups = function(config, style)
         groups.LspSignatureActiveParameter = { bold = true }
     end
 
+    if H.has_integration(config, 'lukas-reineke/indent-blankline.nvim') then
+        groups.IblIndent = { fg = c.xgray7, nocombine = true }
+        groups.IblScope = { fg = c.magenta, nocombine = true }
+    end
+
     if H.has_integration(config, 'HiPhish/nvim-ts-rainbow2') then
         groups.TSRainbowRed = { fg = c.red }
         groups.TSRainbowOrange = { fg = c.orange }
