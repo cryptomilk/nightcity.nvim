@@ -37,7 +37,7 @@ and [Tokyonight](https://github.com/folke/tokyonight.nvim/).
 - [Mini](https://github.com/echasnovski/mini.nvim)
 - [Telescope](https://github.com/nvim-telescope/telescope.nvim)
 - [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
-- [TS Rainbow Parenthesis](https://github.com/HiPhish/nvim-ts-rainbow2)
+- [Rainbow Delimiters](https://gitlab.com/HiPhish/rainbow-delimiters.nvim)
 - [WhichKey](https://github.com/folke/which-key.nvim)
 
 You can configure which plugin support you want to enable or disable. See

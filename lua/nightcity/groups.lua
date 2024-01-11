@@ -924,6 +924,7 @@ H.get_color_groups = function(config, style)
         groups.IblScope = { fg = c.magenta, nocombine = true }
     end
 
+    -- This has been deprecated
     if H.has_integration(config, 'HiPhish/nvim-ts-rainbow2') then
         groups.TSRainbowRed = { fg = c.red }
         groups.TSRainbowOrange = { fg = c.orange }
@@ -932,6 +933,16 @@ H.get_color_groups = function(config, style)
         groups.TSRainbowBlue = { fg = c.blue }
         groups.TSRainbowViolet = { fg = c.purple }
         groups.TSRainbowCyan = { fg = c.cyan }
+    end
+
+    if H.has_integration(config, 'HiPhish/rainbow-delimiters.nvim') then
+        groups.RainbowDelimiterRed = { fg = c.red }
+        groups.RainbowDelimiterOrange = { fg = c.orange }
+        groups.RainbowDelimiterYellow = { fg = c.yellow }
+        groups.RainbowDelimiterGreen = { fg = c.green }
+        groups.RainbowDelimiterBlue = { fg = c.blue }
+        groups.RainbowDelimiterViolet = { fg = c.purple }
+        groups.RainbowDelimiterCyan = { fg = c.cyan }
     end
     ---@diagnostic disable-next-line: unused-local
     local rainbow_test = { { { { { { {} } } } } } }
