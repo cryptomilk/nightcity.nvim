@@ -678,6 +678,12 @@ H.get_color_groups = function(config, style)
         ['@text.diff.delete'] = { link = 'diffRemoved' },
         -- @text.diff.changed     ; doesn't exist ... yet?
         ['@text.diff.changed'] = { link = 'diffChanged' },
+        -- @diff.plus             ; added text (for diff files)
+        ['@diff.plus'] = { link = 'diffAdded' },
+        -- .diff.minus            ; deleted text (for diff files)
+        ['@diff.minus'] = { link = 'diffRemoved' },
+        -- @diff.delta            ; changed diff
+        ['@diff.delta'] = { link = 'diffChanged' },
 
         --
         -- Tags
