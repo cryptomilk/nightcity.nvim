@@ -613,6 +613,10 @@ H.get_color_groups = function(config, style)
         ['@variable'] = { fg = c.white },
         -- @variable.builtin ; built-in variable names (e.g. `this`)
         ['@variable.builtin'] = { link = '@constructor' },
+        -- @variable.parameter  ; parameters of a function
+        ['@variable.parameter'] = { link = '@parameter' },
+        -- @variable.member     ; object and struct fields
+        ['@variable.member'] = { link = '@field' },
 
         -- @constant         ; constant identifiers
         ['@constant'] = { link = 'Constant' },
