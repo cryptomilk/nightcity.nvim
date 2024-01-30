@@ -1,6 +1,8 @@
 # Heading 1
 Paragraph
 
+**Strong**
+
 ## Heading 2
 > Quote
 
@@ -14,5 +16,7 @@ local code = 5
 ```
 
 ##### Heading 5
+- [link](https://cryptomilk.org)
 
 ###### Heading 6
+Math: $`a^2+b^2=c^2`$

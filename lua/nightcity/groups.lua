@@ -690,14 +690,47 @@ H.get_color_groups = function(config, style)
         ['@tag.delimiter'] = { link = 'Delimiter' },
 
         --
-        -- Markdown
+        -- Markup
         --
-        ['@text.title.1.markdown'] = { fg = c.magenta, bold = true },
-        ['@text.title.2.markdown'] = { fg = c.lightred, bold = true },
-        ['@text.title.3.markdown'] = { fg = c.yellow, bold = true },
-        ['@text.title.4.markdown'] = { fg = c.green, bold = true },
-        ['@text.title.5.markdown'] = { fg = c.aqua, bold = true },
-        ['@text.title.6.markdown'] = { fg = c.blue, bold = true },
+
+        -- @markup.strong         ; bold text
+        ['@markup.strong'] = { bold = true },
+        -- @markup.italic         ; italic text
+        ['@markup.italic'] = { italic = true },
+        -- @markup.strikethrough  ; struck-through text
+        ['@markup.strikethrough'] = { strikethrough = true },
+        -- @markup.underline      ; underlined text (only for literal underline markup!)
+        ['@markup.underline'] = { underline = true },
+
+        -- @markup.heading        ; headings, titles (including markers)
+        ['@markup.heading.1'] = { fg = c.magenta, bold = true },
+        ['@markup.heading.2'] = { fg = c.lightred, bold = true },
+        ['@markup.heading.3'] = { fg = c.yellow, bold = true },
+        ['@markup.heading.4'] = { fg = c.green, bold = true },
+        ['@markup.heading.5'] = { fg = c.aqua, bold = true },
+        ['@markup.heading.6'] = { fg = c.blue, bold = true },
+
+        -- @markup.quote          ; block quotes
+        -- @markup.math           ; math environments (e.g. `$ ... $` in LaTeX)
+        ['@markup.math'] = { link = 'Special' },
+        -- @markup.environment    ; environments (e.g. in LaTeX)
+        ['@markup.environment'] = { link = 'Macro' },
+
+        -- @markup.link           ; text references, footnotes, citations, etc.
+        ['@markup.link'] = { link = 'Underlined' },
+        ['@markup.link.label'] = { fg = c.lightblue },
+        -- @markup.link.label     ; link, reference descriptions
+        -- @markup.link.url       ; URL-style links
+
+        -- @markup.raw            ; literal or verbatim text (e.g. inline code)
+        ['@markup.raw'] = { link = 'String' },
+        -- @markup.raw.block      ; literal or verbatim text as a stand-alone block
+        --                        ; (use priority 90 for blocks with injections)
+
+        -- @markup.list           ; list markers
+        ['@markup.list'] = { link = 'Delimiter' },
+        -- @markup.list.checked   ; checked todo-style list markers
+        -- @markup.list.unchecked ; unchecked todo-style list markers
 
         --
         -- Conceal
