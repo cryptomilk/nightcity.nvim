@@ -470,35 +470,37 @@ H.get_color_groups = function(config, style)
         -- Treesitter ========================================================
         -- See `nvim-treesitter/CONTRIBUTING.md` or `:h treesitter`
 
-        --
-        -- Misc
-        --
-        -- @comment               ; line and block comments
-        ['@comment'] = { link = 'Comment' },
-        -- @comment.documentation ; comments documenting code
-        -- @error                 ; syntax/parser errors - better don't set
-        -- @none                  ; completely disable the highlight
-        ['@none'] = { bg = 'NONE', fg = 'NONE' },
-        -- @preproc               ; various preprocessor directives & shebangs
-        ['@preproc'] = { link = 'PreProc' },
-        -- @define                ; preprocessor definition directives
-        ['@define'] = { link = 'Define' },
-        -- @operator              ; symbolic operators (e.g. `+` / `*`)
-        ['@operator'] = { link = 'Operator' },
+        ----------------------------------------------------
+        -- Identifiers
+        ----------------------------------------------------
 
-        --
-        -- Punctuation
-        ['@punctuation'] = { fg = c.xgray5 },
-        -- @punctuation.delimiter ; delimiters (e.g. `;` / `.` / `,`)
-        ['@punctuation.delimiter'] = { link = '@punctuation' },
-        -- @punctuation.bracket   ; brackets (e.g. `()` / `{}` / `[]`)
-        ['@punctuation.bracket'] = { fg = c.orange },
-        -- @punctuation.special   ; special symbols (e.g. `{}` in string interpolation)
-        ['@punctuation.special'] = { link = '@punctuation' },
+        -- @variable          ; various variable names
+        ['@variable'] = { fg = c.white },
+        -- @variable.builtin  ; built-in variable names (e.g. `this`)
+        ['@variable.builtin'] = { link = '@constructor' },
+        -- @variable.parameter ; parameters of a function
+        ['@variable.parameter'] = { fg = c.orange },
+        -- @variable.member   ; object and struct fields
+        ['@variable.member'] = { link = '@field' },
 
-        --
+        -- @constant          ; constant identifiers
+        ['@constant'] = { link = 'Constant' },
+        -- @constant.builtin  ; built-in constant values
+        ['@constant.builtin'] = { link = 'Special' },
+        -- @constant.macro    ; constants defined by the preprocessor
+        ['@constant.macro'] = { link = 'Define' },
+
+        -- @module            ; modules or namespaces
+        ['@module'] = { fg = c.white },
+        -- @module.builtin    ; built-in modules or namespaces
+        ['@module.builtin'] = { link = '@constructor' },
+        -- @label             ; GOTO and other labels (e.g. `label:` in C), including heredoc labels
+        ['@label'] = { link = 'Label' },
+
+        ----------------------------------------------------
         -- Literals
-        --
+        ----------------------------------------------------
+
         -- @string               ; string literals
         ['@string'] = { link = 'String' },
         -- @string.documentation ; string documenting code (e.g. Python docstrings)
@@ -521,9 +523,27 @@ H.get_color_groups = function(config, style)
         -- @float                ; floating-point number literals
         ['@float'] = { link = 'Float' },
 
-        --
+        ----------------------------------------------------
+        -- Types
+        ----------------------------------------------------
+
+        -- @type            ; type or class definitions and annotations
+        ['@type'] = { link = 'Type' },
+        -- @type.builtin    ; built-in types
+        ['@type.builtin'] = { link = 'Type' },
+        -- @type.definition ; type definitions (e.g. `typedef` in C)
+        ['@type.definition'] = { link = 'Typedef' },
+
+        -- @attribute          ; attribute annotations (e.g. Python decorators)
+        ['@attribute'] = { link = 'PreProc' },
+        -- @attribute.builtin  ; builtin annotations (e.g. `@property` in Python)
+        -- @property        ; the key in key/value pairs
+        ['@property'] = { link = '@field' },
+
+        ----------------------------------------------------
         -- Functions
-        --
+        ----------------------------------------------------
+
         -- @function         ; function definitions
         ['@function'] = { link = 'Function' },
         -- @function.builtin ; built-in functions
@@ -532,25 +552,19 @@ H.get_color_groups = function(config, style)
         ['@function.call'] = { link = 'Function' },
         -- @function.macro   ; preprocessor macros
         ['@function.macro'] = { link = 'Macro' },
-        -- @function.diff    ; line defining the files changed
-        ['@function.diff'] = {
-            fg = c.yellow,
-            style = config.font_style.functions,
-        },
-
-        -- @method           ; method definitions
-        ['@method'] = { link = 'Function' },
-        -- @method.call      ; method calls
-        ['@method.call'] = { link = 'Function' },
+        -- @function.method      ; method definitions
+        ['@function.method'] = { link = 'Function' },
+        -- @function.method.call ; method calls
 
         -- @constructor      ; constructor calls and definitions
         ['@constructor'] = { fg = c.purple },
-        -- @parameter        ; parameters of a function
-        ['@parameter'] = { fg = c.orange },
+        -- @operator              ; symbolic operators (e.g. `+` / `*`)
+        ['@operator'] = { link = 'Operator' },
 
-        --
+        ----------------------------------------------------
         -- Keywords
-        --
+        ----------------------------------------------------
+
         -- @keyword             ; various keywords
         ['@keyword'] = { link = 'Keyword' },
         -- @keyword.coroutine   ; keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
@@ -561,10 +575,154 @@ H.get_color_groups = function(config, style)
         },
         -- @keyword.operator    ; operators that are English words (e.g. `and` / `or`)
         ['@keyword.operator'] = { fg = c.aqua },
+        -- @keyword.import            ; keywords for including modules (e.g. `import` / `from` in Python)
+        ['@keyword.import'] = { link = 'Include' },
+        -- @keyword.type              ; keywords describing composite types (e.g. `struct`, `enum`)
+        ['@keyword.type'] = { link = 'Structure' },
+        -- @keyword.modifier          ; keywords modifying other constructs (e.g. `const`, `static`, `public`)
+        ['@keyword.modifier'] = { link = 'Type' },
+        -- @keyword.repeat            ; keywords related to loops (e.g. `for` / `while`)
+        ['@keyword.repeat'] = { link = 'Repeat' },
         -- @keyword.return      ; keywords like `return` and `yield`
         ['@keyword.return'] = { fg = c.red },
+
+        -- @keyword.conditional         ; keywords related to conditionals (e.g. `if` / `else`)
+        ['@keyword.conditional'] = { link = 'Conditional' },
+        -- @keyword.conditional.ternary ; ternary operator (e.g. `?` / `:`)
+
+        -- @keyword.directive         ; various preprocessor directives & shebangs
+        ['@keyword.directive'] = { link = 'PreProc' },
+        -- @keyword.directive.define  ; preprocessor definition directives
+        ['@keyword.directive.define'] = { link = 'Define' },
+
+        ----------------------------------------------------
+        -- Punctuation
+        ----------------------------------------------------
+
+        ['@punctuation'] = { fg = c.xgray5 },
+        -- @punctuation.delimiter ; delimiters (e.g. `;` / `.` / `,`)
+        ['@punctuation.delimiter'] = { link = '@punctuation' },
+        -- @punctuation.bracket   ; brackets (e.g. `()` / `{}` / `[]`)
+        ['@punctuation.bracket'] = { fg = c.orange },
+        -- @punctuation.special   ; special symbols (e.g. `{}` in string interpolation)
+        ['@punctuation.special'] = { link = '@punctuation' },
+
+        ----------------------------------------------------
+        -- Comments
+        ----------------------------------------------------
+
+        -- @comment               ; line and block comments
+        ['@comment'] = { link = 'Comment' },
+        -- @comment.documentation ; comments documenting code
+        -- @comment.todo          ; todo-type comments (e.g. TODO, WIP)
+        ['@comment.todo'] = { link = 'Todo' },
+        -- @comment.error         ; error-type comments (e.g. ERROR, FIXME, DEPRECATED)
+        ['@comment.error'] = { fg = c.white, bg = c.red },
+        -- @comment.warning      ; warning-type comments (e.g. WARNING, FIX, HACK)
+        ['@comment.warning'] = { fg = c.white, bg = c.darkorange },
+        -- @comment.note         ; note-type comments (e.g. NOTE, INFO, XXX)
+        ['@comment.note'] = { fg = c.purple },
+
+        -- @preproc               ; various preprocessor directives & shebangs
+        ['@preproc'] = { link = 'PreProc' },
+        -- @define                ; preprocessor definition directives
+        ['@define'] = { link = 'Define' },
+
+        -- @function.diff    ; line defining the files changed
+        ['@function.diff'] = {
+            fg = c.yellow,
+            style = config.font_style.functions,
+        },
+
+        ----------------------------------------------------
+        -- Markup
+        ----------------------------------------------------
+
+        -- Markup languages --
+
+        -- @markup.strong         ; bold text
+        ['@markup.strong'] = { bold = true },
+        -- @markup.italic         ; italic text
+        ['@markup.italic'] = { italic = true },
+        -- @markup.strikethrough  ; struck-through text
+        ['@markup.strikethrough'] = { strikethrough = true },
+        -- @markup.underline      ; underlined text (only for literal underline markup!)
+        ['@markup.underline'] = { underline = true },
+
+        -- @markup.heading        ; headings, titles (including markers)
+        ['@markup.heading.1'] = { fg = c.magenta, bold = true },
+        ['@markup.heading.2'] = { fg = c.lightred, bold = true },
+        ['@markup.heading.3'] = { fg = c.yellow, bold = true },
+        ['@markup.heading.4'] = { fg = c.green, bold = true },
+        ['@markup.heading.5'] = { fg = c.aqua, bold = true },
+        ['@markup.heading.6'] = { fg = c.blue, bold = true },
+
+        -- @markup.quote          ; block quotes
+        -- @markup.math           ; math environments (e.g. `$ ... $` in LaTeX)
+        ['@markup.math'] = { link = 'Special' },
+        -- @markup.environment    ; environments (e.g. in LaTeX)
+        ['@markup.environment'] = { link = 'Macro' },
+
+        -- @markup.link           ; text references, footnotes, citations, etc.
+        ['@markup.link'] = { link = 'Underlined' },
+        ['@markup.link.label'] = { fg = c.lightblue },
+        -- @markup.link.label     ; link, reference descriptions
+        -- @markup.link.url       ; URL-style links
+
+        -- @markup.raw            ; literal or verbatim text (e.g. inline code)
+        ['@markup.raw'] = { link = 'String' },
+        -- @markup.raw.block      ; literal or verbatim text as a stand-alone block
+        --                        ; (use priority 90 for blocks with injections)
+
+        -- @markup.list           ; list markers
+        ['@markup.list'] = { link = 'Delimiter' },
+        -- @markup.list.checked   ; checked todo-style list markers
+        -- @markup.list.unchecked ; unchecked todo-style list markers
+
+        -- Diff --
+
+        -- @diff.plus             ; added text (for diff files)
+        ['@diff.plus'] = { link = 'diffAdded' },
+        -- .diff.minus            ; deleted text (for diff files)
+        ['@diff.minus'] = { link = 'diffRemoved' },
+        -- @diff.delta            ; changed diff
+        ['@diff.delta'] = { link = 'diffChanged' },
+
+        -- XML style tags --
+        -- @tag           ; XML tag names
+        ['@tag'] = { link = 'Tag' },
+        -- @tag.attribute ; XML tag attributes
+        ['@tag.attribute'] = { link = 'Identifier' },
+        -- @tag.delimiter ; XML tag delimiters
+        ['@tag.delimiter'] = { link = 'Delimiter' },
+
+        -- Git --
+
         -- @keyword.git_rebase ; pick, edit, etc. keywords during git rebase
         ['@keyword.git_rebase'] = { fg = c.red },
+
+        ----------------------------------------------------
+        -- Non-highlighting captures
+        ----------------------------------------------------
+
+        -- @none    ; completely disable the highlight
+        ['@none'] = { bg = 'NONE', fg = 'NONE' },
+        -- @conceal ; for captures that are only used for concealing
+
+        -- @spell   ; for defining regions to be spellchecked
+        -- @nospell ; for defining regions that should NOT be spellchecked
+
+        ---------------------------------------------------
+        -- Deprecated (will be removed in a future version)
+        ---------------------------------------------------
+
+        -- @method           ; method definitions
+        ['@method'] = { link = 'Function' },
+        -- @method.call      ; method calls
+        ['@method.call'] = { link = 'Function' },
+
+        -- @parameter        ; parameters of a function
+        ['@parameter'] = { fg = c.orange },
 
         -- @conditional         ; keywords related to conditionals (e.g. `if` / `else`)
         ['@conditional'] = { link = 'Conditional' },
@@ -574,56 +732,22 @@ H.get_color_groups = function(config, style)
         ['@repeat'] = { link = 'Repeat' },
         -- @debug               ; keywords related to debugging
         ['@debug'] = { link = 'Debug' },
-        -- @label               ; GOTO and other labels (e.g. `label:` in C)
-        ['@label'] = { link = 'Label' },
         -- @include             ; keywords for including modules (e.g. `import` / `from` in Python)
         ['@include'] = { link = 'Include' },
         -- @exception           ; keywords related to exceptions (e.g. `throw` / `catch`)
         ['@exception'] = { link = 'Exception' },
 
-        --
-        -- Types
-        --
-        -- @type            ; type or class definitions and annotations
-        ['@type'] = { link = 'Type' },
-        -- @type.builtin    ; built-in types
-        ['@type.builtin'] = { link = 'Type' },
-        -- @type.definition ; type definitions (e.g. `typedef` in C)
-        ['@type.definition'] = { link = 'Typedef' },
         -- @type.qualifier  ; type qualifiers (e.g. `const`)
         ['@type.qualifier'] = { link = 'Type' },
 
         -- @storageclass    ; modifiers that affect storage in memory or life-time
         ['@storageclass'] = { link = 'StorageClass' },
-        -- @attribute       ; attribute annotations (e.g. Python decorators)
-        ['@attribute'] = { link = 'PreProc' },
         -- @attibute.diff   ; dfff line info
         ['@attribute.diff'] = { fg = c.blue },
         -- @field           ; object and struct fields
         ['@field'] = { fg = c.blue },
-        -- @property        ; similar to `@field`
-        ['@property'] = { link = '@field' },
         -- @structure       ; structures like `struct` in C
         ['@structure'] = { link = 'Structure' },
-
-        --
-        -- Identifiers
-        --
-        -- @variable         ; various variable names
-        ['@variable'] = { fg = c.white },
-        -- @variable.builtin ; built-in variable names (e.g. `this`)
-        ['@variable.builtin'] = { link = '@constructor' },
-        -- @variable.parameter  ; parameters of a function
-        ['@variable.parameter'] = { link = '@parameter' },
-        -- @variable.member     ; object and struct fields
-        ['@variable.member'] = { link = '@field' },
-
-        -- @constant         ; constant identifiers
-        ['@constant'] = { link = 'Constant' },
-        -- @constant.builtin ; built-in constant values
-        ['@constant.builtin'] = { link = 'Special' },
-        -- @constant.macro   ; constants defined by the preprocessor
-        ['@constant.macro'] = { link = 'Define' },
 
         -- @namespace        ; modules or namespaces
         ['@namespace'] = { fg = c.white },
@@ -682,76 +806,6 @@ H.get_color_groups = function(config, style)
         ['@text.diff.delete'] = { link = 'diffRemoved' },
         -- @text.diff.changed     ; doesn't exist ... yet?
         ['@text.diff.changed'] = { link = 'diffChanged' },
-        -- @diff.plus             ; added text (for diff files)
-        ['@diff.plus'] = { link = 'diffAdded' },
-        -- .diff.minus            ; deleted text (for diff files)
-        ['@diff.minus'] = { link = 'diffRemoved' },
-        -- @diff.delta            ; changed diff
-        ['@diff.delta'] = { link = 'diffChanged' },
-
-        --
-        -- Tags
-        --
-        -- @tag           ; XML tag names
-        ['@tag'] = { link = 'Tag' },
-        -- @tag.attribute ; XML tag attributes
-        ['@tag.attribute'] = { link = 'Identifier' },
-        -- @tag.delimiter ; XML tag delimiters
-        ['@tag.delimiter'] = { link = 'Delimiter' },
-
-        --
-        -- Markup
-        --
-
-        -- @markup.strong         ; bold text
-        ['@markup.strong'] = { bold = true },
-        -- @markup.italic         ; italic text
-        ['@markup.italic'] = { italic = true },
-        -- @markup.strikethrough  ; struck-through text
-        ['@markup.strikethrough'] = { strikethrough = true },
-        -- @markup.underline      ; underlined text (only for literal underline markup!)
-        ['@markup.underline'] = { underline = true },
-
-        -- @markup.heading        ; headings, titles (including markers)
-        ['@markup.heading.1'] = { fg = c.magenta, bold = true },
-        ['@markup.heading.2'] = { fg = c.lightred, bold = true },
-        ['@markup.heading.3'] = { fg = c.yellow, bold = true },
-        ['@markup.heading.4'] = { fg = c.green, bold = true },
-        ['@markup.heading.5'] = { fg = c.aqua, bold = true },
-        ['@markup.heading.6'] = { fg = c.blue, bold = true },
-
-        -- @markup.quote          ; block quotes
-        -- @markup.math           ; math environments (e.g. `$ ... $` in LaTeX)
-        ['@markup.math'] = { link = 'Special' },
-        -- @markup.environment    ; environments (e.g. in LaTeX)
-        ['@markup.environment'] = { link = 'Macro' },
-
-        -- @markup.link           ; text references, footnotes, citations, etc.
-        ['@markup.link'] = { link = 'Underlined' },
-        ['@markup.link.label'] = { fg = c.lightblue },
-        -- @markup.link.label     ; link, reference descriptions
-        -- @markup.link.url       ; URL-style links
-
-        -- @markup.raw            ; literal or verbatim text (e.g. inline code)
-        ['@markup.raw'] = { link = 'String' },
-        -- @markup.raw.block      ; literal or verbatim text as a stand-alone block
-        --                        ; (use priority 90 for blocks with injections)
-
-        -- @markup.list           ; list markers
-        ['@markup.list'] = { link = 'Delimiter' },
-        -- @markup.list.checked   ; checked todo-style list markers
-        -- @markup.list.unchecked ; unchecked todo-style list markers
-
-        --
-        -- Conceal
-        --
-        -- @conceal ; for captures that are only used for concealing
-
-        --
-        -- Spell
-        --
-        -- @spell   ; for defining regions to be spellchecked
-        -- @nospell ; for defining regions that should NOT be spellchecked
 
         -- Diagnostic ========================================================
         -- See `:help diagnostic-highlights`
@@ -810,15 +864,15 @@ H.get_color_groups = function(config, style)
         ['@lsp.type.comment'] = {},
         ['@lsp.type.comment.c'] = { link = '@comment' },
         ['@lsp.type.comment.cpp'] = { link = '@comment' },
-        ['@lsp.type.decorator'] = { link = '@parameter' },
+        ['@lsp.type.decorator'] = { link = '@variable.parameter' },
         ['@lsp.type.enum'] = { link = '@type' },
         ['@lsp.type.enumMember'] = { link = '@constant' },
         ['@lsp.type.function'] = { link = '@function' },
         ['@lsp.type.interface'] = { link = '@keyword' },
-        ['@lsp.type.macro'] = { link = '@macro' },
-        ['@lsp.type.method'] = { link = '@method' },
-        ['@lsp.type.namespace'] = { link = '@namespace' },
-        ['@lsp.type.parameter'] = { link = '@parameter' },
+        ['@lsp.type.macro'] = { link = '@constant.macro' },
+        ['@lsp.type.method'] = { link = '@function.method' },
+        ['@lsp.type.namespace'] = { link = '@module' },
+        ['@lsp.type.parameter'] = { link = '@variable.parameter' },
         ['@lsp.type.property'] = { link = '@property' },
         ['@lsp.type.struct'] = { link = '@constructor' },
         ['@lsp.type.type'] = { link = '@type' },
