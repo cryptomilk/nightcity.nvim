@@ -894,6 +894,10 @@ H.get_color_groups = function(config, style)
     if H.has_integration(config, 'echasnovski/mini.nvim') then
         groups.MiniCompletionActiveParameter = { underline = true }
 
+        groups.MiniDiffSignAdd = { fg = c.green }
+        groups.MiniDiffSignChange = { fg = c.aqua }
+        groups.MiniDiffSignDelete = { fg = c.red }
+
         groups.MiniIndentscopeSymbol = { fg = c.magenta }
         groups.MiniIndentscopePrefix = { nocombine = true } -- Make it invisible
 
