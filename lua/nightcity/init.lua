@@ -37,6 +37,23 @@ NightCity.config = {
     on_highlights = function(groups, colors) end,
 }
 
+local error = function(msg)
+    error('(nightcity.nvim) ' .. msg, 0)
+end
+
+-- Switch from `vim.validate` for type checking to custom helper.
+-- This is mostly due to Neovim>=0.11 changing `vim.validate` signature.
+local check_type = function(name, val, ref, allow_nil)
+    if
+        type(val) == ref
+        or (ref == 'callable' and vim.is_callable(val))
+        or (allow_nil and val == nil)
+    then
+        return
+    end
+    error(string.format('`%s` should be %s, not %s', name, ref, type(val)))
+end
+
 --- Module setup
 ---
 ---@param config table|nil Module config table. See |NightCity.config|.
@@ -79,47 +96,39 @@ end
 H.default_config = NightCity.config
 
 H.setup_config = function(config)
-    vim.validate({ config = { config, 'table', true } })
+    check_type('config', config, 'table', true)
 
     config = vim.tbl_deep_extend('force', H.default_config, config or {})
 
-    vim.validate({
-        style = { config.style, 'string' },
-        terminal_colors = { config.terminal_colors, 'boolean' },
-        invert_colors = { config.invert_colors, 'table' },
-        font_style = { config.font_style, 'table' },
-        plugins = { config.plugins, 'table' },
-        on_highlights = { config.on_highlights, 'function' },
-    })
+    check_type('style', config.style, 'string')
+    check_type('terminal_colors', config.terminal_colors, 'boolean')
+    check_type('invert_colors', config.invert_colors, 'table')
+    check_type('font_style', config.font_style, 'table')
+    check_type('plugins', config.plugins, 'table')
+    check_type('on_highlights', config.on_highlights, 'function')
 
-    vim.validate({
-        ['invert_colors.cursor'] = { config.invert_colors.cursor, 'boolean' },
-        ['invert_colors.diff'] = { config.invert_colors.diff, 'boolean' },
-        ['invert_colors.error'] = { config.invert_colors.error, 'boolean' },
-        ['invert_colors.search'] = { config.invert_colors.search, 'boolean' },
-        ['invert_colors.selection'] = {
-            config.invert_colors.selection,
-            'boolean',
-        },
-        ['invert_colors.signs'] = { config.invert_colors.signs, 'boolean' },
-        ['invert_colors.statusline'] = {
-            config.invert_colors.statusline,
-            'boolean',
-        },
-        ['invert_colors.tabline'] = {
-            config.invert_colors.tabline,
-            'boolean',
-        },
-    })
-    vim.validate({
-        ['font_style.comments'] = { config.font_style.comments, 'table' },
-        ['font_style.keywords'] = { config.font_style.keywords, 'table' },
-        ['font_style.functions'] = { config.font_style.functions, 'table' },
-        ['font_style.variables'] = { config.font_style.variables, 'table' },
-    })
-    vim.validate({
-        ['plugins.default'] = { config.plugins.default, 'boolean' },
-    })
+    check_type('invert_colors.cursor', config.invert_colors.cursor, 'boolean')
+    check_type('invert_colors.diff', config.invert_colors.diff, 'boolean')
+    check_type('invert_colors.error', config.invert_colors.error, 'boolean')
+    check_type('invert_colors.search', config.invert_colors.search, 'boolean')
+    check_type(
+        'invert_colors.selection',
+        config.invert_colors.selection,
+        'boolean'
+    )
+    check_type('invert_colors.signs', config.invert_colors.signs, 'boolean')
+    check_type(
+        'invert_colors.statusline',
+        config.invert_colors.statusline,
+        'boolean'
+    )
+    check_type('invert_colors.tabline', config.invert_colors.tabline, 'boolean')
+
+    check_type('font_style.comments', config.font_style.comments, 'table')
+    check_type('font_style.keywords', config.font_style.keywords, 'table')
+    check_type('font_style.functions', config.font_style.functions, 'table')
+    check_type('font_style.variables', config.font_style.variables, 'table')
+    check_type('plugins.default', config.plugins.default, 'boolean')
 
     return config
 end
