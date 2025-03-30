@@ -651,7 +651,7 @@ H.get_color_groups = function(config, style)
 
         -- @markup.heading        ; headings, titles (including markers)
         ['@markup.heading.1'] = { fg = c.magenta, bold = true },
-        ['@markup.heading.2'] = { fg = c.lightred, bold = true },
+        ['@markup.heading.2'] = { fg = c.darkcyan, bold = true },
         ['@markup.heading.3'] = { fg = c.yellow, bold = true },
         ['@markup.heading.4'] = { fg = c.green, bold = true },
         ['@markup.heading.5'] = { fg = c.aqua, bold = true },
@@ -1023,6 +1023,21 @@ H.get_color_groups = function(config, style)
     if H.has_integration(config, 'lukas-reineke/indent-blankline.nvim') then
         groups.IblIndent = { fg = c.xgray7, nocombine = true }
         groups.IblScope = { fg = c.magenta, nocombine = true }
+    end
+
+    if H.has_integration(config, 'MeanderingProgrammer/render-markdown.nvim') then
+        groups.RenderMarkdownH1 = { fg = c.magenta, bold = true }
+        groups.RenderMarkdownH2 = { fg = c.darkcyan, bold = true }
+        groups.RenderMarkdownH3 = { fg = c.yellow, bold = true }
+        groups.RenderMarkdownH4 = { fg = c.green, bold = true }
+        groups.RenderMarkdownH5 = { fg = c.aqua, bold = true }
+        groups.RenderMarkdownH6 = { fg = c.blue, bold = true }
+        groups.RenderMarkdownH1Bg = { bg = darken(c.magenta, 0.1) }
+        groups.RenderMarkdownH2Bg = { bg = darken(c.darkcyan, 0.1) }
+        groups.RenderMarkdownH3Bg = { bg = darken(c.yellow, 0.1) }
+        groups.RenderMarkdownH4Bg = { bg = darken(c.green, 0.1) }
+        groups.RenderMarkdownH5Bg = { bg = darken(c.aqua, 0.1) }
+        groups.RenderMarkdownH6Bg = { bg = darken(c.blue, 0.1) }
     end
 
     -- This has been deprecated
