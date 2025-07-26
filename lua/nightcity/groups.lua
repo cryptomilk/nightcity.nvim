@@ -1041,6 +1041,11 @@ H.get_color_groups = function(config, style)
         groups.RenderMarkdownH6Bg = { bg = darken(c.blue, 0.1) }
     end
 
+    if H.has_integration(config, 'mfussenegger/nvim-dap') then
+        groups.DapStoppedText = { fg = c.yellow }
+        groups.DapStoppedLine = { bg = darken(c.yellow, 0.1) }
+    end
+
     -- This has been deprecated
     if H.has_integration(config, 'HiPhish/nvim-ts-rainbow2') then
         groups.TSRainbowRed = { fg = c.red }
