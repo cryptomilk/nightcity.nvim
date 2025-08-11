@@ -551,7 +551,8 @@ H.get_color_groups = function(config, style)
         -- @function.call    ; function calls
         ['@function.call'] = { link = 'Function' },
         -- @function.macro   ; preprocessor macros
-        ['@function.macro'] = { link = 'Macro' },
+        -- ['@function.macro'] = { link = 'Macro' },
+        ['@function.macro'] = { fg = c.aqua, style = config.font_style.functions },
         -- @function.method      ; method definitions
         ['@function.method'] = { link = 'Function' },
         -- @function.method.call ; method calls
