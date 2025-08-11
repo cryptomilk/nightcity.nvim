@@ -1,4 +1,4 @@
-*nightcity.nvim.txt*       For Neovim >= 0.9.0      Last change: 2025 March 30
+*nightcity.nvim.txt*      For Neovim >= 0.9.0      Last change: 2025 August 11
 
 ==============================================================================
 Table of Contents                           *nightcity.nvim-table-of-contents*
